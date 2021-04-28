@@ -32,10 +32,10 @@ public class RoundRobin {
 
         Proceso proceso4 = new Proceso("Discord");
         proceso4.setRafaga(2);
-        
+
         Proceso proceso5 = new Proceso("VisualStudio");
         proceso5.setRafaga(10);
-        
+
         Proceso proceso6 = new Proceso("SharpDevelop");
         proceso6.setRafaga(7);
 
@@ -57,10 +57,10 @@ public class RoundRobin {
                 if (diferencia > 0) {
                     p.setRestante(diferencia);
                     procesador.add(p);
-                }else if(procesador.isEmpty()){
+                } else if (procesador.isEmpty()) {
                     break;
                 }
-                
+
                 muestraProcesos();
                 tec.nextLine();
             } else {
@@ -76,9 +76,12 @@ public class RoundRobin {
         System.out.println("Q U A N T U M = " + QUANTUM);
 
         System.out.println("\nN O M B R E          R Á F A G A          R E S T A N T E");
-
         for (Proceso proceso : procesador) {
-            System.out.format("%-21s%-21d%d\n", proceso.getNombre(), proceso.getRafaga(), proceso.getRestante());
+            if (proceso.equals(procesador.peek())) {
+                System.out.format("%-21s%-21d%-15d\n", ("[A]>"+proceso.getNombre()+"<[A]"), proceso.getRafaga(), proceso.getRestante());
+            } else {
+                System.out.format("%-21s%-21d%-15d\n", proceso.getNombre(), proceso.getRafaga(), proceso.getRestante());
+            }
         }
     }
 }
